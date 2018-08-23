@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "start-to-sweat-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Tony Van den Eynde",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
