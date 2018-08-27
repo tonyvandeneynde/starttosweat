@@ -4,11 +4,15 @@
   "description": "start-to-sweat-server",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "nodemon index.js"
   },
   "author": "Tony Van den Eynde",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "knex": "^0.15.2",
+    "pg": "^7.4.3"
   }
 }
