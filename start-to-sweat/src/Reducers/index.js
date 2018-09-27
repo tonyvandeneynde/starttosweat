@@ -4,6 +4,7 @@ const initialStateUser = {
   userName: '',
   loggedIn: false,
   exercises: [],
+  workouts: []
 }
 
 function user(state = initialStateUser, action = {}) {

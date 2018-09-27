@@ -89,10 +89,13 @@ class MyWorkouts extends Component {
     const { subRoute, currentWorkout } = this.state;
     const { workouts, onBack } = this.props;
     let backgroundColor = '';
+    let workoutsJsx = '';
 
-    const workoutsJsx = workouts.map((workout, i) => {
-      return <BrowserButton key={i} text={workout.name} onClick={() => this.setWorkoutDetail(workout)} />
-    })
+    if (workouts!==undefined){
+      workoutsJsx = workouts.map((workout, i) => {
+        return <BrowserButton key={i} text={workout.name} onClick={() => this.setWorkoutDetail(workout)} />
+      })
+    }
 
     if (subRoute === 'runWorkout') {
       backgroundColor = 'dark';
