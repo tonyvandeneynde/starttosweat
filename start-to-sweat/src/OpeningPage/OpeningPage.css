@@ -1,0 +1,65 @@
+.backgroundBlack{
+    background-color: rgb(27, 17, 13);
+    height:100vh;
+    min-height:max-content;
+}
+.openingPage{
+    background-color: black;
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('./BackgroundImage/background.jpg');
+    background-size: 100%;
+    background-position: 0;
+    background-repeat: no-repeat;
+    height: 100%;
+    min-height: max-content;
+    padding:0;
+    margin:0;
+    color: white;
+    display: flex;
+}
+
+.openingPage .title-container{
+    margin:auto;
+    left: 50%;
+    top: 35%;
+    position: absolute;
+    color: white;
+    transform: translate(-50%);
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+
+.openingPage .title{
+    margin-bottom: 40px;
+}
+
+.openingPage h1{
+    font-size: 3em;
+    font-weight: 300;
+    letter-spacing: 2px;
+    padding:0;
+    margin:0;
+    line-height: 1.2;
+}
+
+.openingPage .btn-full{
+    margin:0;
+}
+
+.openingPage .btn-empty{
+    margin:15px 0;
+}
+
+@media only screen and (max-width: 600px){
+    .openingPage{
+        background-image: none;
+    }
+    .openingPage h1{
+        font-size: 2em;
+    }
+    .openingPage .title-container{
+        margin:auto;
+        left: 50%;
+        top: 20%;
+    }
+}

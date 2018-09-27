@@ -1,0 +1,49 @@
+.actionsBrowser{
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    background: #007E65;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    height:80%;
+    transform: translateX(-50%);
+}
+
+.background{
+    position: fixed;
+    top:0px;
+    left:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.808);
+    width: 100%;
+    height:100vh;
+}
+
+.detailContainer{
+    height: 90%;
+    overflow: auto;
+    margin-bottom:0;
+}
+
+.actionsFilters{
+    display: flex;
+    justify-content: center;
+}
+
+.height98Percent{
+    height:98%;
+}
+
+@media only screen and (max-width: 1100px){
+    .actionsBrowser{
+        top: 1%;
+        padding:2px;
+        width:98%;
+        height:98%
+    }
+    .actionsFilters{
+        display: flex;
+        justify-content: space-between;
+    }
+}

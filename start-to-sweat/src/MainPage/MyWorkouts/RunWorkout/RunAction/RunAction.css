@@ -1,0 +1,69 @@
+.runAction{
+    margin:10px 0;
+    background-color: #007E65;
+    min-height: 550px;
+    min-width: 300px;
+}
+.rarest{
+    background-color: #007c00;
+}
+
+.timeRunningOut{
+    animation: FadeOut1 0.5s ease-in-out forwards;
+}
+
+.timeRunningOut2{
+    animation: FadeOut2 0.5s ease-in-out forwards;
+}
+
+@keyframes FadeOut1 {
+    from {
+      background-color: red;
+    }
+  }
+
+  @keyframes FadeOut2 {
+    from {
+      background-color: red;
+    }
+  }
+  
+
+.raExName{
+    background-color: #66D8C2;
+    margin-bottom:20px;
+    color: black;
+    font-size: 1.2em;
+}
+
+.raName{
+    font-size: 2em;
+    font-weight: 600;
+    padding:5px;
+}
+
+.raParameters{
+    margin-top:20px;
+    padding:10px;
+}
+
+.runAction button{
+    margin: 10px 0;
+}
+
+.raTimer{
+    font-size: 3em;
+    font-weight: 600;
+}
+
+.raNextUp{
+    background-color: #007E65;
+    color:white;
+    margin:10px;
+    padding:10px;
+    border-radius: 20px;
+}
+
+.raNextUpLabel{
+    margin-bottom:10px;
+}

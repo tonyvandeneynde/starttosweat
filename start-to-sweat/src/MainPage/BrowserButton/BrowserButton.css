@@ -1,0 +1,44 @@
+.browserButton {
+    border: 2px;
+    border-color: #1ABC9C;
+    border-style: solid;
+    border-radius: 10px;
+    color: #007E65;
+    margin: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    font-size: 1.5em;
+}
+
+.browserButton:hover{
+    transform: scale(1.1);
+}
+
+.browserButton-container{
+    text-align: center;
+    margin:auto;
+}
+
+.browserButton-container img{
+    max-width:160px;
+    max-height: 140px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.full{
+    background-color: #1ABC9C;
+    color:white;
+}
+
+@media only screen and (max-width: 600px){
+    .browserButton{
+        margin:10px;
+    }
+}

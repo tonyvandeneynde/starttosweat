@@ -1,0 +1,85 @@
+.RunMain{
+    background-color: rgb(56, 56, 56);
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.RunMain .cancelButtonContainer{
+    flex-basis: 100%;
+    text-align: left;
+    padding: 20px;
+}
+
+.RunMain .title{
+    font-size: 2em;
+    flex-basis: 100%;
+}
+
+.exercisePil{
+    text-align: center;
+    margin:20px;
+    background-color: #1ABC9C;
+    padding:5px;
+}
+
+.exerciseProperty{
+    margin:auto 50px;
+
+}
+
+.exerciseProperties{
+    display: flex;
+    margin-left: auto;
+}
+
+.buttonStartExercise{
+    border-style: none;
+    border-width: 0;
+    background-color: #007E65;
+    outline-style: none;
+    color: white;
+    border-radius: 500px;
+    padding: 5px 20px;
+    margin:5px;
+    transition: 0.2s;
+    height: 100%;
+}
+
+.status{
+    margin-left:auto;
+    font-size: 1.5em;
+    color: #edfaf8;
+}
+
+.finished{
+    background-color: rgb(18, 102, 85);
+    color:rgba(255, 255, 255, 0.685);
+}
+
+.RunMain button:hover{
+    color: #1ABC9C;
+}
+
+@media only screen and (max-width: 600px){
+    .RunMain{
+        display: block;
+    }
+    .exerciseProperty{
+        margin:0;
+        padding:20px;
+    }
+
+    .exerciseProperties{
+        flex-wrap: wrap;
+    }
+
+    .exerciseProperties .name{
+        flex-basis: 100%;
+        font-size: 1.5em;
+    }
+}

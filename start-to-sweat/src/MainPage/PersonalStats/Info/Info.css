@@ -1,0 +1,61 @@
+.personalInfo{
+    text-align: center;
+    margin-left:auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.weighingsCanvas{
+    border-style: solid;
+    border-color: #3CC8AD;
+    border-radius: 10px;
+    width: 60vw;
+    height: 60vw;
+    max-width: 500px;
+    min-width: 280px;
+    max-height: 500px;
+    min-height: 280px;
+    margin-bottom:50px;
+    background-color: #3CC8AD;
+}
+
+.personalInfo .alignLeft{
+    text-align: left;
+    flex-basis: 60%;
+    padding: 20px 0;
+}
+
+.personalInfo .alignRight{
+    margin-right: 40px;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.marginLeft20{
+    margin-left:20px;
+}
+
+.weighingPill{
+    background-color: #3CC8AD;
+    border-radius: 5px;
+    margin:10px 0;
+    display: flex;
+    justify-content: space-between;
+    padding:5px;
+}
+
+.deleteWeighingButton{
+    background-color: #007E65;
+    border-style: none;
+    width:40px;
+    margin-left:20px;
+}
+
+@media only screen and (max-width: 400px){
+    .personalInfo .alignLeft{
+        flex-basis: 100%;
+    }
+}

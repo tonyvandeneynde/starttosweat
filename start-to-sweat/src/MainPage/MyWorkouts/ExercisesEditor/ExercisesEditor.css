@@ -1,0 +1,8 @@
+.exerciseDetailButton{
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.exerciseDetailButton:hover{
+    color:white;
+}

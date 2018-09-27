@@ -1,0 +1,72 @@
+.loginform{
+    position: absolute;
+    margin:auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-style: solid;
+    border-color: #1ABC9C;
+    border-radius: 30px;
+    padding:30px;
+    border-width: 2px;
+    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) );
+}
+
+.loginform fieldset{
+    border-style: none;
+}
+
+.loginform .legend{
+    margin-bottom:40px;
+    color: #1ABC9C;
+    font-size: 4em;
+    font-weight: 800;
+    letter-spacing: 3px;
+    padding:0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.loginform .credentials{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.loginform label{
+    font-size: 1.5em;
+    margin-right: 40px;
+}
+
+.loginform .toRight{
+    text-align: right;
+}
+
+.loginform .toCenter{
+    text-align: center;
+}
+
+.loginform .links{
+    cursor: pointer;
+    margin:10px;
+    font-size: 1.5em;
+}
+
+.loginform input{
+    font-size: 1.5em;
+}
+
+@media only screen and (max-width: 600px){
+    .loginform{
+        padding:5px 20px;
+    }
+    .loginform .credentials{
+        flex-wrap: wrap;
+        margin:0;
+    }
+
+    .loginform .legend{
+        margin-bottom: 5px;
+        font-size: 1.5em;
+    }
+}

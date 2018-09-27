@@ -37,10 +37,14 @@ app.post('/user', (req, res) => {
             db('login').insert({
                 username: username,
                 password: hash
-            }).then((dbResponse) => {
+            }).then(dbResponse => {
+                return db('users').insert({
+                    username: username
+                })
+            }).then(dbResponse => {
                 res.write('user created');
                 res.end();
-            }).catch((error) => {
+            }).catch(error => {
                 res.status('400');
                 res.write('register failed');
                 res.end();
@@ -51,7 +55,7 @@ app.post('/user', (req, res) => {
 
 app.post('/login', (req, res) => {
     console.log("Request handler 'login' was called.");
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     db.select('password').from('login').where({ username: username }).then(rows => {
         if (rows[0]) {
             return rows[0].password;
@@ -76,9 +80,48 @@ app.post('/login', (req, res) => {
     })
 })
 
+app.get('/user/:username', (req, res) => {
+    const username = req.params.username;
+    getUserPromise(username)
+    .then(user=>{
+        res.write(JSON.stringify(user));
+        res.end();
+    })
+})
+
+app.put('/user', (req, res) => {
+    console.log("Request handler PUT /user was called.");
+    const { username, dob=null, height=null, weighings=[] } = req.body;
+
+    db('users').where('username', username).update({
+        dob: dob,
+        height: height
+    }).then(()=>{
+        return db('weighings').where('username', username).del()
+    }).then(()=>{
+        const insertWeighingsPromises = weighings.map(weighing => {
+            const {date, weight=null, fatpercentage=null} = weighing;
+            return db('weighings').insert({
+                username:username,
+                date:date,
+                weight:weight,
+                fatpercentage:fatpercentage
+            })
+        })
+        return Promise.all(insertWeighingsPromises);
+    })
+    .then(()=>{
+        return getUserPromise(username)
+    })
+    .then((user)=>{
+        res.write(JSON.stringify(user));
+        res.end();
+    })
+})
+
 app.get('/exercises/:owner', (req, res) => {
-    console.log("Request handler GET /exercises was called.");
     const owner = req.params.owner;
+    console.log(`Request handler GET /exercises was called with owner ${owner}`);
     getExercisesOfOwnerPromise(owner).then(exercises => {
         res.write(JSON.stringify(exercises));
         res.end();
@@ -87,7 +130,7 @@ app.get('/exercises/:owner', (req, res) => {
 
 app.post('/exercise', (req, res) => {
     console.log("Request handler POST /exercise was called.");
-    const { name, type, owner, actions, duration } = req.body;
+    const { name, type, owner, actions=[], duration } = req.body;
     let id;
     db('exercises').insert({
         name: name,
@@ -155,12 +198,12 @@ app.put('/exercise', (req, res) => {
         return Promise.all(updateActionsPromises);
     }).then(() => {
         // remove unused actions
-        const lastActionNumber = actions[actions.length-1].number;
+        const lastActionNumber = actions[actions.length - 1].number;
         return db('exercise_actions').where('exercise_id', id).andWhere('number', '>', lastActionNumber).del();
     }).then(() => {
         return getExerciseByIdPromise(id);
     }).then(exercise => {
-        res.write(JSON.stringify(exercise));
+        res.write(JSON.stringify(exercise[0]));
         res.end();
     })
 
@@ -183,21 +226,170 @@ app.delete('/exercise/:id', (req, res) => {
 
 app.get('/machines', (req, res) => {
     db('machines')
-    .then(dbResponse => {
-        res.write(JSON.stringify(dbResponse));
-        res.end();
-    })
+        .then(dbResponse => {
+            res.write(JSON.stringify(dbResponse));
+            res.end();
+        })
 })
 
-app.get('/actions', (req,res) => {
+app.get('/actions', (req, res) => {
     db('actions')
-    .then(dbResponse => {
-        res.write(JSON.stringify(dbResponse));
-        res.end();
+        .then(dbResponse => {
+            res.write(JSON.stringify(dbResponse));
+            res.end();
+        })
+})
+
+app.get('/types', (req, res) => {
+    db('exercise_types')
+        .then(dbResponse => {
+            res.write(JSON.stringify(dbResponse));
+            res.end();
+        })
+})
+
+app.post('/workout', (req, res) => {
+    console.log("Request handler POST /workout was called.");
+    const { name, owner, duration = null, exercises } = req.body;
+    let workoutId;
+    db('workouts').insert({
+        name: name,
+        owner: owner,
+        duration: duration ? duration : null
+    }).returning('id').then(rows => {
+        workoutId = rows[0];
+        const insertExercisesPromises = exercises.map(exercise => {
+            const { id, number, finished=false } = exercise;
+            return db('workout_exercises').insert({
+                workout_id: workoutId,
+                exercise_id: id,
+                exercise_number: number,
+                finished: finished
+            })
+        })
+        return Promise.all(insertExercisesPromises);
+    }).then(dbRes => {
+        getWorkoutByIdPromise(workoutId)
+            .then(workouts => {
+                res.write(JSON.stringify(workouts[0]));
+                res.end();
+            })
     })
 })
 
+app.get('/workout/:id', (req, res) => {
+    const workoutId = req.params.id;
+    console.log("Request handler GET /workout was called.");
+    getWorkoutByIdPromise(workoutId)
+        .then(workouts => {
+            res.write(JSON.stringify(workouts[0]));
+            res.end();
+            console.log(workouts[0]);
+        })
+})
 
+app.get('/workouts/:owner', (req, res) => {
+    const owner = req.params.owner;
+    console.log("Request handler GET /workout was called.");
+    getWorkoutsByOwnerPromise(owner)
+        .then(workouts => {
+            res.write(JSON.stringify(workouts));
+            res.end();
+            console.log(workouts[0]);
+        })
+})
+
+app.delete('/workout/:id', (req, res) => {
+    console.log("Request handler DELETE /workout was called.");
+    const id = req.params.id;
+    db('workouts').where({ id: id }).del()
+        .then(dbResponse => {
+            res.write('workout deleted');
+            res.end();
+        })
+})
+
+app.put('/workout', (req, res) => {
+    console.log("Request handler PUT /workout was called.");
+    let { id, name, owner, duration, exercises } = req.body;
+    const workoutId = id;
+    db('workout_exercises').where('workout_id', workoutId).del()
+    .then(()=>{
+        return db('workouts').where('id', workoutId).update({
+            name: name,
+            owner: owner,
+            duration: duration ? duration : null
+        })
+    }).then(() => {
+        const insertExercisesPromises = exercises.map(exercise => {
+            const { id, number, finished } = exercise;
+            return db('workout_exercises').insert({
+                workout_id: workoutId,
+                exercise_id: id,
+                exercise_number: number,
+                finished: finished
+            })
+        })
+        return Promise.all(insertExercisesPromises);
+    }).then(dbRes => {
+        getWorkoutByIdPromise(id)
+            .then(workouts => {
+                res.write(JSON.stringify(workouts[0]));
+                res.end();
+            })
+    })
+
+})
+
+getUserPromise = (username) =>{
+    let user, weighings;
+
+    const userPromise = db('users').where('username', username)
+    .then(dbResponse => {
+        user = dbResponse[0];
+    })
+
+    const weighingsPromise = db('weighings').where('username', username).orderBy('date').select(['date', 'weight', 'fatpercentage'])
+    .then(dbResponse =>{
+        weighings = dbResponse;
+    })
+
+    return new Promise((resolve)=>{
+        Promise.all([userPromise, weighingsPromise]).then(()=>{
+            user.weighings = weighings;
+            resolve(user);
+        })
+    })
+}
+
+getWorkoutByIdPromise = (id) => {
+    return getWorkoutPromiseWhere({ 'workouts.id': id });
+}
+
+getWorkoutsByOwnerPromise = (owner) => {
+    return getWorkoutPromiseWhere({ 'workouts.owner': owner });
+}
+
+getWorkoutPromiseWhere = (whereClause) => {
+    workoutsPromise = new Promise((resolve, reject) => {
+        db.from('workouts').join('workout_exercises', 'workouts.id', '=', 'workout_exercises.workout_id').where(whereClause).orderByRaw('id, exercise_number')
+            .then(dbResponse => {
+                let workouts = [];
+                dbResponse.forEach(row => {
+                    const exercise = { number: row.exercise_number, id: row.exercise_id, finished: row.finished }
+                    let workout = workouts.find(w => w.id === row.id);
+                    if (workout === undefined) {
+                        // create new workout object
+                        workout = { name: row.name, id: row.id, owner: row.owner, duration: row.duration, exercises: [] }
+                        workouts.push(workout);
+                    }
+                    workout.exercises.push(exercise);
+                });
+                resolve(workouts);
+            })
+    })
+    return workoutsPromise;
+}
 
 getExercisesOfOwnerPromise = (owner) => {
     return getExercisePromise({ 'exercises.owner': owner })

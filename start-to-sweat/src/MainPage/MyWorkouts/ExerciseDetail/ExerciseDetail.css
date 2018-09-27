@@ -1,0 +1,25 @@
+.exerciseDetail{
+    background-color: #edfaf8;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    padding:10px 100px;
+    margin:20px;
+}
+
+.exerciseButtons{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom:20px;
+}
+
+.alignLeft{
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px){
+    .exerciseDetail{
+        margin:2px;
+        padding: 10px 3px;
+    }
+}

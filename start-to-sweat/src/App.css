@@ -1,28 +1,54 @@
 .App {
-  text-align: center;
+  font-family: 'Lato', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin:0;
+  height:100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#root{
+  height:100%;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+button{
+  cursor: pointer;
+}
+
+.btn-full{
+  background-color: #1ABC9C;
   color: white;
-}
-
-.App-title {
+  padding: 10px;
   font-size: 1.5em;
+  font-weight: 600;
+  border-radius: 500px;
+  margin-right: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1ABC9C;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
-.App-intro {
-  font-size: large;
+.btn-empty{
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  font-size: 1.5em;
+  font-weight: 600;
+  border-radius: 500px;
+  margin-right: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #1ABC9C;
+  transition: 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.btn-full:hover, .btn-empty:hover{
+  transform: scale(1.1);
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Lato-Regular'), local('Lato'), url(./fonts/Lato/Lato-Light.ttf) format('truetype');
 }

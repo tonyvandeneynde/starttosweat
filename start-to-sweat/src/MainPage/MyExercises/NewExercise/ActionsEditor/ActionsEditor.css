@@ -1,0 +1,202 @@
+.actionsEditor{
+    padding: 20px 0px;
+    text-align: center;
+}
+
+.actionsTitle{
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.actionSettings{
+    height:60px;
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    border: 3px;
+    border-style: solid;
+    border-color: #1ABC9C;
+    background-color: #1ABC9C;
+    border-radius: 200px;
+    margin: 10px;
+    color: black;
+}
+
+.actionSettings .parameterContainer{
+    display: flex;
+    align-items: center;
+    width:100%;
+    justify-content: space-between;
+}
+
+.actionsEditor .rest{
+    border-style: solid;
+    border-color:#6EE96E;
+    background-color: #6EE96E;
+
+}
+
+.actionsEditor .name{
+    min-width: 100px;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: left;
+    margin: 0 20px 0 10px;
+}
+
+.actionSettings .actionButtons{
+    display: flex;
+    margin-left: auto;
+    margin-right:0;
+    height:100%;
+}
+
+.actionSettings .orderButtons{
+    margin-left: auto;
+    margin-right:3px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-basis: 100%;
+}
+
+.actionSettings .move{
+    width: 50px;
+    background-color: rgba(0, 0, 0, 0.596);
+    flex-basis: 48%;
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.actionSettings .delete{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    line-height: 100%;
+    width: 40px;
+    border-bottom-right-radius: 200px;
+    border-top-right-radius: 200px;
+    background-color: rgba(0, 0, 0, 0.596);
+    border-style: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    margin-right: 0px;
+    text-align: center;
+    transition-duration: 0.2s;
+}
+
+.actionSettings .duration{
+    margin-right:20px;
+}
+
+.actionsEditor .delete:hover{
+    color: rgba(255, 255, 255, 0.603);
+}
+
+.orderButtons .move:hover{
+    color: rgba(255, 255, 255, 0.603);
+}
+
+.actionsEditor input{
+    width: 50px;
+}
+
+.actionsEditor .flex{
+    display: flex;
+}
+
+.actionsEditor .flexRight{
+    margin-left: auto;
+    margin-right:0;
+    
+}
+
+.parameterContainer .flex{
+    display: flex;
+    justify-content: center;
+}
+
+.parameterMaginLR{
+    margin-left: 10px;
+    margin-right:10px;
+    margin-top:5px;
+}
+
+.lightButton{
+    background-Color:rgb(158, 158, 158);
+    color: white;
+}
+
+input[type="time"]{
+    width:auto;
+}
+
+input[type="time"]::-webkit-clear-button {
+    display: none;
+}
+
+@media only screen and (max-width: 600px){
+    .actionSettings{
+        height: auto;
+        border-radius: 10px;
+        margin-left: 0;
+        margin-right:0;
+        padding-right: 10px;
+    }
+    .actionSettings .parameterContainer{
+        flex-wrap: wrap;
+        height: auto;
+        margin:0;
+        padding:0;
+        width:100%;
+    }
+    .actionSettings .name{
+        flex-basis: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 10px 0;
+    }
+    .actionSettings .actionButtons{
+        display: block;
+        margin-left: auto;
+    }
+    .actionSettings .delete{
+        display: flex;
+        border-radius: 2px;
+        margin:0;
+        margin-bottom:10px;
+        height: 30px;
+        width:100%;
+    }
+
+    .actionSettings .move{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        margin: 10px 0;
+        border-radius:2px;
+        width:100%;
+        padding: 0px;
+        width:60px;
+    }
+
+    .actionSettings .orderButtons{
+        margin:0;
+        padding:0;
+        display: block;
+    }
+    .parameterContainer .flex{
+        margin-left:auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,86 @@
+.actionDetail{
+    display: flex;
+    flex-wrap: wrap;
+    background-color:white;
+    width: 100%;
+    margin:0;
+}
+
+.actionName{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2em;
+    flex-basis: 100%;
+    text-align: center;
+    background-color: rgb(49, 49, 49);
+    color:white;
+    padding:20px;
+}
+
+.actionInfoContainer{
+    display: flex;
+    min-height:100vh;
+    height: max-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actionDetail img{
+    max-height: 300px;
+    max-width: 100%;
+    height: auto;
+}
+
+.actionParameters{
+    flex-basis: 50%;
+    min-width: 250px;
+    text-align: left;
+}
+
+.parameterValue{
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+.parameter{
+    margin: 20px;
+}
+.parameterName{
+    font-weight: 600;
+    margin:0;
+}
+
+.detailButtons button{
+    font-size: 1em;
+}
+
+.actionNameText{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+@media only screen and (max-width: 600px){
+    .actionInfoContainer{
+        flex-wrap: wrap;
+    }
+    .detailButtons{
+        flex-basis: 100%;
+        order: 2;
+    }
+    .detailButtons button{
+        width:100%;
+        max-width: 300px;
+        border-radius: 0;
+        margin:10px 0;
+        font-size: 0.5em;
+    }
+    .actionParameters{
+        flex-basis: 100%;
+    }
+    .parameterValue{
+        margin-left:10px;
+    }
+    .parameter{
+        margin:10px 5px;
+    }
+}

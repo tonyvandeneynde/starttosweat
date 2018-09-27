@@ -1,0 +1,38 @@
+.newExercise{
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:#007E65;
+}
+
+.newExercise .title{
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-color: #1ABC9C;
+    font-size: 1.5em;
+}
+
+form input, form select{
+    margin: 10px;
+}
+
+.titleBar{
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonGroup{
+    display: flex;
+}
+
+.deleteExerciseButton{
+    margin-left: auto;
+}
+
+@media only screen and (max-width: 600px){
+    .newExercise{
+        margin: 10px;
+    }
+}

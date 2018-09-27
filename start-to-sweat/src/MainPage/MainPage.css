@@ -1,0 +1,12 @@
+.grid{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    height:100%;
+    align-content: flex-start;
+}
+
+.mainPage{
+    min-height:100%;
+}
