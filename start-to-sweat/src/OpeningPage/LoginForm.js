@@ -68,8 +68,8 @@ class LoginForm extends Component {
                         </div>
                     </fieldset>
                     <div className='toCenter'>
-                        <input className='btn-full' onClick={this.onLogin} type="button" value="Sign in" />
-                        <input className='btn-empty' onClick={this.props.onCancel} type="button" value="Cancel" />
+                        <input className='btn-full signinButton' onClick={this.onLogin} type="button" value="Sign in" />
+                        <input className='btn-empty signinButton' onClick={this.props.onCancel} type="button" value="Cancel" />
                     </div>
                     <div className='toRight'>
                         <div className='links' onClick={() => {this.props.onregister()}}>Sign up</div>

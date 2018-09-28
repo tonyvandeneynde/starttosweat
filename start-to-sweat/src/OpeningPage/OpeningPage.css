@@ -43,11 +43,11 @@
 }
 
 .openingPage .btn-full{
-    margin:0;
+    margin:0 10px;
 }
 
 .openingPage .btn-empty{
-    margin:15px 0;
+    margin:15px 10px;
 }
 
 @media only screen and (max-width: 600px){
