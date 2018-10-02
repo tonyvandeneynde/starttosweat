@@ -31,7 +31,10 @@ class MainPage extends Component {
         super(props);
         this.state = {
             route: 'mainBrowser',
-            previousRoute: 'mainBrowser'
+            previousRoute: 'mainBrowser',
+            exercisesLoaded: false,
+            workoutsLoaded:false,
+            userLoaded:false
         }
         this.setRoute = this.setRoute.bind(this);
     }
@@ -42,13 +45,13 @@ class MainPage extends Component {
         .then(res => { return res.json() })
         .then(exercises => {
             this.props.setExercises(exercises);
-            this.forceUpdate();
+            this.setState({exercisesLoaded: true});
         })
         fetch(`http://localhost:8888/workouts/${this.props.username}`)
         .then(res => { return res.json() })
         .then(workouts => {
             this.props.setWorkouts(workouts);
-            this.forceUpdate();
+            this.setState({workoutsLoaded: true})
         })
     }
 
@@ -59,13 +62,13 @@ class MainPage extends Component {
 
     render() {
         const { username } = this.props;
-        const {route} = this.state;
+        const {route, exercisesLoaded, workoutsLoaded} = this.state;
         return (
             <div className='mainPage'>
                 <Navbar username={username} />
                 {
                     route === 'mainBrowser' &&
-                    <MainBrowser setRoute={this.setRoute}/>
+                    <MainBrowser setRoute={this.setRoute} exercisesLoaded={exercisesLoaded} workoutsLoaded={workoutsLoaded}/>
                 }
                 {
                     route === 'exercises' &&

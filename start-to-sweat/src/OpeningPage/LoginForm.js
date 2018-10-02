@@ -23,10 +23,11 @@ class LoginForm extends Component {
     }
 
     onLogin() {
+        console.log('on login');
         fetch('http://localhost:8888/login', {
             method: 'post',
             headers: {
-                'content-type': 'application/json',
+                'content-type': 'text/plain',
             },
             body: JSON.stringify({ username: this.state.username, password: this.state.password })
         }).then((res, err)=>{
