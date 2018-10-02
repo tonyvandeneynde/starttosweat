@@ -4,7 +4,7 @@ import 'cubic-spline'
 
 export default class Info extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             readOnly: true,
@@ -15,15 +15,17 @@ export default class Info extends Component {
         this.deleteWeighing = this.deleteWeighing.bind(this);
         this.addWeighing = this.addWeighing.bind(this);
         this.onChangeTodaysWeight = this.onChangeTodaysWeight.bind(this);
+        this.updateWeightGraph = this.updateWeightGraph.bind(this);
+        this.updateWeightGraph();
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
         let currentWeight = 0;
-        if (nextProps.user.weighings.length > 0) {
-            currentWeight = nextProps.user.weighings[nextProps.user.weighings.length - 1].weight;
-        }
+        currentWeight = nextProps.user.weighings[nextProps.user.weighings.length - 1].weight;
+
         this.setState({
-            readOnly: true,
+            readOnly:true,
             username: nextProps.user.username,
             dob: nextProps.user.dob,
             height: nextProps.user.height,
@@ -32,7 +34,22 @@ export default class Info extends Component {
         })
     }
 
-    componentDidUpdate() {
+    componentDidMount(){
+        const currentWeight = this.props.user.weighings[this.props.user.weighings.length - 1].weight;
+        this.setState({
+            username: this.props.user.username,
+            dob: this.props.user.dob,
+            height: this.props.user.height,
+            weighings: this.props.user.weighings,
+            currentWeight: currentWeight
+        }, ()=> this.updateWeightGraph());
+    }
+
+    componentDidUpdate(){
+        this.updateWeightGraph();
+    }
+
+    updateWeightGraph() {
         let canvas = document.querySelector('.weighingsCanvas');
         const weighings = this.state.weighings;
 
@@ -257,6 +274,7 @@ export default class Info extends Component {
     }
 
     render() {
+        console.log('render info')
         const { username = '', readOnly, weighings = [], currentWeight = '' } = this.state;
         let todaysMeasurement = false;
         let { dob, height } = this.state;

@@ -6,13 +6,19 @@ export class PersonalStats extends Component {
     constructor(props) {
         super(props);
         this.state={
-            user:{}
+            user:{},
+            userLoaded:false
         }
         this.saveUserInfo = this.saveUserInfo.bind(this);
     }
     render() {
+        console.log(this.state.userLoaded)
         return (
-            <Info user={this.state.user} save={this.saveUserInfo} onBack={this.props.onBack}/>
+            <div>
+            {this.state.userLoaded &&
+                <Info user={this.state.user} save={this.saveUserInfo} onBack={this.props.onBack}/>
+            }
+            </div>
         )
     }
     componentDidMount(){
@@ -20,7 +26,8 @@ export class PersonalStats extends Component {
         .then(res => { return res.json() })
         .then(user =>{
             this.setState({
-                user: user
+                user: user,
+                userLoaded:true
             })
         })
     }
@@ -38,7 +45,6 @@ export class PersonalStats extends Component {
                 user:user
             })
         })
-    
     }
 }
 
