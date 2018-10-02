@@ -8,6 +8,7 @@ const saltRounds = 10;
 //app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 let db = require('knex')({
     client: 'pg',
@@ -55,7 +56,8 @@ app.post('/user', (req, res) => {
 
 app.post('/login', (req, res) => {
     console.log("Request handler 'login' was called.");
-    const { username, password } = req.body;
+    console.log(req.body)
+    const { username, password } = JSON.parse(req.body);
     db.select('password').from('login').where({ username: username }).then(rows => {
         if (rows[0]) {
             return rows[0].password;
