@@ -10,6 +10,7 @@
     "cubic-spline": "^1.0.4",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-redux": "^5.1.0",
     "react-scripts": "1.1.4",
     "webpack": "^3.11.0"
   },
