@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
     onLogin() {
         console.log('on login');
-        fetch(`$https://mysterious-shelf-79717.herokuapp.com/login`, {
+        fetch(`https://mysterious-shelf-79717.herokuapp.com/login`, {
             method: 'post',
             headers: {
                 'content-type': 'text/plain',
