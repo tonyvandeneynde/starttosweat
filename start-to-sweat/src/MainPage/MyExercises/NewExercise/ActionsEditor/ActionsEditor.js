@@ -20,7 +20,7 @@ class ActionsEditor extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:8888/actions`)
+        fetch(`${process.env.REACT_APP_API_URL}/actions`)
             .then(res => { return res.json() })
             .then(actionDefinitions => {
                 this.setState(Object.assign({}, this.state, { actionDefinitions: actionDefinitions }))

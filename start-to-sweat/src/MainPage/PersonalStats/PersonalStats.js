@@ -22,7 +22,7 @@ export class PersonalStats extends Component {
         )
     }
     componentDidMount(){
-        fetch('http://localhost:8888/user/'+this.props.username)
+        fetch(`${process.env.REACT_APP_API_URL}/user/`+this.props.username)
         .then(res => { return res.json() })
         .then(user =>{
             this.setState({
@@ -33,7 +33,7 @@ export class PersonalStats extends Component {
     }
 
     saveUserInfo(user){
-        fetch(`http://localhost:8888/user`, {
+        fetch(`${process.env.REACT_APP_API_URL}/user`, {
             method: 'put',
             headers: {
                 'content-type': 'application/json',

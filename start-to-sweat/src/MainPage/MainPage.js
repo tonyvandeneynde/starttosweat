@@ -41,13 +41,13 @@ class MainPage extends Component {
 
     componentDidMount(){
         console.log('componentDidMount')
-        fetch(`http://localhost:8888/exercises/${this.props.username}`)
+        fetch(`${process.env.REACT_APP_API_URL}/exercises/${this.props.username}`)
         .then(res => { return res.json() })
         .then(exercises => {
             this.props.setExercises(exercises);
             this.setState({exercisesLoaded: true});
         })
-        fetch(`http://localhost:8888/workouts/${this.props.username}`)
+        fetch(`${process.env.REACT_APP_API_URL}/workouts/${this.props.username}`)
         .then(res => { return res.json() })
         .then(workouts => {
             this.props.setWorkouts(workouts);

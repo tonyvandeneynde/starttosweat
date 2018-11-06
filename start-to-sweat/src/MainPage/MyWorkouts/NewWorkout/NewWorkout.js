@@ -56,7 +56,7 @@ class NewWorkout extends Component {
             workout.owner = username;
             method = 'post'
         }
-        fetch(`http://localhost:8888/workout`, {
+        fetch(`${process.env.REACT_APP_API_URL}/workout`, {
             method: method,
             headers: {
                 'content-type': 'application/json',
@@ -81,7 +81,7 @@ class NewWorkout extends Component {
 
     onDelete() {
         const workoutId = this.state.workout.id;
-        fetch(`http://localhost:8888/workout/${workoutId}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/workout/${workoutId}`, {
             method: 'delete',
             headers: {
                 'content-type': 'application/json',

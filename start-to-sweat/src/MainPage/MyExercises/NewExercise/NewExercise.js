@@ -37,7 +37,7 @@ class NewExercise extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://localhost:8888/types`)
+        fetch(`${process.env.REACT_APP_API_URL}/types`)
             .then((res) => {
                 return res.json();
             }).then((rows) => {
@@ -75,7 +75,7 @@ class NewExercise extends Component {
             exercise.owner = username;
             method = 'post'
         }
-        fetch('http://localhost:8888/exercise', {
+        fetch(`${process.env.REACT_APP_API_URL}/exercise`, {
             method: method,
             headers: {
                 'content-type': 'application/json',
@@ -100,7 +100,7 @@ class NewExercise extends Component {
 
     onDelete() {
         const exerciseId = this.state.exercise.id;
-        fetch(`http://localhost:8888/exercise/${exerciseId}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/exercise/${exerciseId}`, {
             method: 'delete',
             headers: {
                 'content-type': 'application/json',

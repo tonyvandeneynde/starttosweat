@@ -12,6 +12,8 @@ const mapState = (state) => {
 
 class App extends Component {
   render() {
+    console.log('server url');
+    console.log(process.env.REACT_APP_API_URL)
     const { loggedIn } = this.props;
     return (
       <div className="App">

@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
     onLogin() {
         console.log('on login');
-        fetch('http://localhost:8888/login', {
+        fetch(`${process.env.REACT_APP_API_URL}/login`, {
             method: 'post',
             headers: {
                 'content-type': 'text/plain',

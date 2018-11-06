@@ -4,7 +4,7 @@ import BrowserButton from '../BrowserButton/BrowserButton';
 
 class MainBrowser extends Component{
     render(){
-        const {setRoute, exercisesLoaded, workoutsLoaded, userLoaded} = this.props;
+        const {setRoute, exercisesLoaded, workoutsLoaded} = this.props;
         return(
             <div className='mainBrowser'>
                 <div className='grid'>

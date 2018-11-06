@@ -22,7 +22,7 @@ class ActionsBrowser extends Component {
         let machines = [], muscleGroups = [];
 
         if(actions){
-            fetch('http://localhost:8888/machines')
+            fetch(`${process.env.REACT_APP_API_URL}/machines`)
             .then(res => { return res.json() })
             .then(resJson => {
                 resJson.forEach(machine => {
