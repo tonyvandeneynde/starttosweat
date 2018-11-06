@@ -26,7 +26,7 @@ class Register extends Component {
     }
 
     onRegister() {
-        fetch(`${process.env.REACT_APP_API_URL}/user`, {
+        fetch(`https://mysterious-shelf-79717.herokuapp.com/user`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',

@@ -66,7 +66,7 @@ export class RunMain extends Component {
 
     updateWorkout(workout){
         const exercises = workout.exercises;
-        fetch(`${process.env.REACT_APP_API_URL}/workout`, {
+        fetch(`https://mysterious-shelf-79717.herokuapp.com/workout`, {
             method: 'put',
             headers: {
                 'content-type': 'application/json',

@@ -56,7 +56,7 @@ class NewWorkout extends Component {
             workout.owner = username;
             method = 'post'
         }
-        fetch(`${process.env.REACT_APP_API_URL}/workout`, {
+        fetch(`https://mysterious-shelf-79717.herokuapp.com/workout`, {
             method: method,
             headers: {
                 'content-type': 'application/json',
@@ -81,7 +81,7 @@ class NewWorkout extends Component {
 
     onDelete() {
         const workoutId = this.state.workout.id;
-        fetch(`${process.env.REACT_APP_API_URL}/workout/${workoutId}`, {
+        fetch(`https://mysterious-shelf-79717.herokuapp.com/workout/${workoutId}`, {
             method: 'delete',
             headers: {
                 'content-type': 'application/json',
