@@ -2,6 +2,10 @@
   "name": "start-to-sweat",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "5.6.0",
+    "node": "9.5.0"
+  },
   "dependencies": {
     "cubic-spline": "^1.0.4",
     "react": "^16.4.2",
