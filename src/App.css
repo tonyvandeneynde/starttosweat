@@ -23,7 +23,7 @@ button{
   border-width: 1px;
   border-style: solid;
   border-width: 1px;
-  border-color: #1ABC9C;
+  border-color: rgb(34, 134, 114);
   font-weight: 500;
   transition: 0.2s;
 }
