@@ -25,7 +25,7 @@ export default class Info extends Component {
         currentWeight = nextProps.user.weighings[nextProps.user.weighings.length - 1].weight;
 
         this.setState({
-            readOnly:true,
+            readOnly: true,
             username: nextProps.user.username,
             dob: nextProps.user.dob,
             height: nextProps.user.height,
@@ -34,18 +34,22 @@ export default class Info extends Component {
         })
     }
 
-    componentDidMount(){
-        const currentWeight = this.props.user.weighings[this.props.user.weighings.length - 1].weight;
+    componentDidMount() {
+        let currentWeight = 0;
+        if (this.props.user.weighings.length > 0) {
+            currentWeight = this.props.user.weighings[this.props.user.weighings.length - 1].weight;
+        }
+
         this.setState({
             username: this.props.user.username,
             dob: this.props.user.dob,
             height: this.props.user.height,
             weighings: this.props.user.weighings,
             currentWeight: currentWeight
-        }, ()=> this.updateWeightGraph());
+        }, () => this.updateWeightGraph());
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.updateWeightGraph();
     }
 
@@ -335,23 +339,29 @@ export default class Info extends Component {
                                 <div>username</div>
                                 <div className='marginLeft20'>{username}</div>
                             </div>
-                            <div className='margin20'>
-                                <div>age</div>
-                                <div className='marginLeft20'>{age}</div>
-                            </div>
-                            <div className='margin20'>
-                                <div>height</div>
-                                <div className='marginLeft20'>{height} cm</div>
-                            </div>
-                            <div className='margin20'>
-                                <div>weight</div>
-                                <div className='marginLeft20'>{currentWeight} kg</div>
-                            </div>
+                            {age > 0 &&
+                                <div className='margin20'>
+                                    <div>age</div>
+                                    <div className='marginLeft20'>{age}</div>
+                                </div>
+                            }
+                            {height > 0 &&
+                                <div className='margin20'>
+                                    <div>height</div>
+                                    <div className='marginLeft20'>{height} cm</div>
+                                </div>
+                            }
+                            {currentWeight !== 0 &&
+                                <div className='margin20'>
+                                    <div>weight</div>
+                                    <div className='marginLeft20'>{currentWeight} kg</div>
+                                </div>
+                            }
                         </div>
-                        {weighings.length>2 &&
+                        {weighings.length > 2 &&
                             <canvas className='weighingsCanvas'></canvas>
                         }
-                        
+
                     </div>
                     :
                     <div className='personalInfo'>
