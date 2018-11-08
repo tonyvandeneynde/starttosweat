@@ -131,7 +131,7 @@ class NewExercise extends Component {
         else {
             this.setState({
                 readOnly: true,
-                exercise: this.props.exercise,
+                exercise: JSON.parse(JSON.stringify(this.props.exercise)),
                 title: 'Exercise'
             })
         }
