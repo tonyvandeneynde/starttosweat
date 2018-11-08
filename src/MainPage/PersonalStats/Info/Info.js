@@ -22,8 +22,9 @@ export default class Info extends Component {
     componentWillReceiveProps(nextProps) {
         console.log(nextProps)
         let currentWeight = 0;
-        currentWeight = nextProps.user.weighings[nextProps.user.weighings.length - 1].weight;
-
+        if (nextProps.user.weighings.length>0){
+            currentWeight = nextProps.user.weighings[nextProps.user.weighings.length - 1].weight;
+        }
         this.setState({
             readOnly: true,
             username: nextProps.user.username,
