@@ -1,4 +1,6 @@
 .loginform{
+    height:550px;
+    width:400px;
     position: absolute;
     margin:auto;
     left: 50%;

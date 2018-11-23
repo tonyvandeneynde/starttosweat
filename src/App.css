@@ -43,7 +43,8 @@ button{
 }
 
 .btn-full:hover, .btn-empty:hover{
-  transform: scale(1.1);
+  border-color: rgba(34, 134, 114, 0.534);
+  background-color:rgba(34, 134, 114, 0.534);
 }
 
 @font-face {
