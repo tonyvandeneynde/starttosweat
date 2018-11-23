@@ -41,13 +41,13 @@ class MainPage extends Component {
 
     componentDidMount(){
         console.log('componentDidMount')
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/exercises/${this.props.username}`)
+        fetch(`${process.env.REACT_APP_API_URL}/exercises/${this.props.username}`)
         .then(res => { return res.json() })
         .then(exercises => {
             this.props.setExercises(exercises);
             this.setState({exercisesLoaded: true});
         })
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/workouts/${this.props.username}`)
+        fetch(`${process.env.REACT_APP_API_URL}/workouts/${this.props.username}`)
         .then(res => { return res.json() })
         .then(workouts => {
             this.props.setWorkouts(workouts);

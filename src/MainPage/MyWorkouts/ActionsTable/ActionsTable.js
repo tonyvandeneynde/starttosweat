@@ -14,7 +14,7 @@ class ActionsTable extends Component {
     }
 
     componentDidMount() {
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/actions`)
+        fetch(`${process.env.REACT_APP_API_URL}/actions`)
             .then(res => { return res.json() })
             .then(actionDefinitions => {
                 this.setState(Object.assign({}, this.state, { actionDefinitions: actionDefinitions }));

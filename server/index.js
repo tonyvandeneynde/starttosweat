@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser')
-//const cors = require('cors');
+const cors = require('cors');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-//app.use(cors());
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
@@ -459,6 +459,6 @@ getExercisePromise = (whereClause) => {
 
 
 
-app.listen(8888, function () {
-    console.log('recipe server listening on port 8888!');
+app.listen(8889, function () {
+    console.log('recipe server listening on port 8889!');
 });

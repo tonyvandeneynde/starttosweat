@@ -22,7 +22,7 @@ export class PersonalStats extends Component {
         )
     }
     componentDidMount(){
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/user/`+this.props.username)
+        fetch(`${process.env.REACT_APP_API_URL}/user/`+this.props.username)
         .then(res => { return res.json() })
         .then(user =>{
             this.setState({
@@ -33,7 +33,7 @@ export class PersonalStats extends Component {
     }
 
     saveUserInfo(user){
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/user`, {
+        fetch(`${process.env.REACT_APP_API_URL}/user`, {
             method: 'put',
             headers: {
                 'content-type': 'application/json',

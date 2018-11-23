@@ -15,7 +15,7 @@ export class RunExercise extends Component {
   }
 
   componentDidMount() {
-    fetch(`https://mysterious-shelf-79717.herokuapp.com/actions`)
+    fetch(`${process.env.REACT_APP_API_URL}/actions`)
       .then(res => { return res.json() })
       .then(actionDefinitions => {
         const { actions } = this.props.exercise;

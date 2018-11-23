@@ -16,7 +16,7 @@
     "webpack": "^3.11.0"
   },
   "scripts": {
-    "setupscript": "set REACT_APP_API_URL=https://mysterious-shelf-79717.herokuapp.com",
+    "setupscript": "set REACT_APP_API_URL=https://process.env.REACT_APP_API_URL",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

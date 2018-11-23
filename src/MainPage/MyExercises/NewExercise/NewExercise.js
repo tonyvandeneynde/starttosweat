@@ -37,7 +37,7 @@ class NewExercise extends Component {
     }
 
     componentDidMount() {
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/types`)
+        fetch(`${process.env.REACT_APP_API_URL}/types`)
             .then((res) => {
                 return res.json();
             }).then((rows) => {
@@ -75,7 +75,7 @@ class NewExercise extends Component {
             exercise.owner = username;
             method = 'post'
         }
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/exercise`, {
+        fetch(`${process.env.REACT_APP_API_URL}/exercise`, {
             method: method,
             headers: {
                 'content-type': 'application/json',
@@ -100,7 +100,7 @@ class NewExercise extends Component {
 
     onDelete() {
         const exerciseId = this.state.exercise.id;
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/exercise/${exerciseId}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/exercise/${exerciseId}`, {
             method: 'delete',
             headers: {
                 'content-type': 'application/json',

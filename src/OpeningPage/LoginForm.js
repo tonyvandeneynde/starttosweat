@@ -24,7 +24,7 @@ class LoginForm extends Component {
 
     onLogin() {
         console.log('on login');
-        fetch(`https://mysterious-shelf-79717.herokuapp.com/login`, {
+        fetch(`${process.env.REACT_APP_API_URL}/login`, {
             method: 'post',
             headers: {
                 'content-type': 'text/plain',
@@ -75,6 +75,7 @@ class LoginForm extends Component {
                     <div className='toRight'>
                         <div className='links' onClick={() => {this.props.onregister()}}>Sign up</div>
                     </div>
+                    {process.env.REACT_APP_SECRET_CODE}
                 </form>
             </main>
         );
