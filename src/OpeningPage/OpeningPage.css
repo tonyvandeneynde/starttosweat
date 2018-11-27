@@ -51,6 +51,9 @@
 }
 
 @media only screen and (max-width: 600px){
+    .backgroundBlack{
+        background-color: rgb(0, 61, 49);
+    }
     .openingPage{
         background-image: none;
     }
